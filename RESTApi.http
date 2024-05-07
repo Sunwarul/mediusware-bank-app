@@ -13,3 +13,15 @@ Content-Type: application/json
     "password_confirmation" : "password"
 }
 
+###
+
+# Login user
+POST {{ host }}/login
+Accept: application/json
+Content-Type: application/json
+
+{
+    "email" : "user1@gmail.com",
+    "password" : "password",
+}
+

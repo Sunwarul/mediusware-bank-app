@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
 use App\Services\IUserService;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
@@ -18,6 +18,7 @@ class UserController extends Controller
     {
         $userAttributes = $request->validated();
         $user = $this->userService->createUser($userAttributes);
+
         return response()->json($user, Response::HTTP_CREATED);
     }
 }
