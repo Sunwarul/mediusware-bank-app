@@ -2,12 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Enums\AccountTypeEnum;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rules\Enum;
-use Illuminate\Validation\Rules\Password;
 
-class UserStoreRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +22,8 @@ class UserStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255|unique:users',
-            'password' => ['required', 'string', 'max:255', 'confirmed', Password::default()],
-            'account_type' => ['required', new Enum(AccountTypeEnum::class)],
+            'email' => 'required|string|max:255|exists:users,email',
+            'password' => 'required|string',
         ];
     }
 }
