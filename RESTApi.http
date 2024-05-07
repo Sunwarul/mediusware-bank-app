@@ -1,0 +1,15 @@
+@host = http://127.0.0.1:8000/api
+
+# Create a user
+POST {{ host }}/users
+Accept: application/json
+Content-Type: application/json
+
+{
+    "name" : "John Doe",
+    "email" : "user1@gmail.com",
+    "account_type" : "Savings",
+    "password" : "password",
+    "password_confirmation" : "password"
+}
+
