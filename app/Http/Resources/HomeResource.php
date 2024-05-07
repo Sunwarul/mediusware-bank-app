@@ -14,6 +14,9 @@ class HomeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'transactions' => $this['transactions'],
+            'current_balance' => $this['currentBalance'],
+        ];
     }
 }

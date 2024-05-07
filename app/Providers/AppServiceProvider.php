@@ -6,7 +6,10 @@ use App\Services\AuthService;
 use App\Services\IAuthService;
 use App\Services\IUserService;
 use App\Services\UserService;
+use App\Services\WithdrawService;
+use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\ServiceProvider;
+use IWithdrawService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(IUserService::class, UserService::class);
         $this->app->bind(IAuthService::class, AuthService::class);
+        $this->app->bind(IWithdrawService::class, WithdrawService::class);
     }
 
     /**
@@ -24,6 +28,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        JsonResource::withoutWrapping();
     }
 }
