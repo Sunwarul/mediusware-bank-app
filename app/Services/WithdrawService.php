@@ -35,7 +35,12 @@ class WithdrawService implements IWithdrawService
                 }
             }
         } else if ($accountType === AccountTypeEnum::Business->value) {
-            $fee = (0.025 * $amount) / 100;
+            $lessCharge = Transaction::where('user_id', $user->id)->sum('amount') >= 50_000;
+            if ($lessCharge) {
+                $fee = (0.015 * $amount) / 100;
+            } else {
+                $fee = (0.025 * $amount) / 100;
+            }
         }
 
         return $fee;
