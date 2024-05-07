@@ -3,13 +3,13 @@
 namespace App\Providers;
 
 use App\Services\AuthService;
+use App\Services\UserService;
 use App\Services\IAuthService;
 use App\Services\IUserService;
-use App\Services\UserService;
 use App\Services\WithdrawService;
-use Illuminate\Http\Resources\Json\JsonResource;
+use App\Services\IWithdrawService;
 use Illuminate\Support\ServiceProvider;
-use IWithdrawService;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class AppServiceProvider extends ServiceProvider
 {

@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Enums\TransactionTypeEnum;
+use App\Services\IWithdrawService;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\WithdrawRequest;
-use IWithdrawService;
+use Symfony\Component\HttpFoundation\Response;
 
 class WithdrawalController extends Controller
 {
@@ -27,8 +31,7 @@ class WithdrawalController extends Controller
         if ($withdraw) {
             return response()->json([
                 'message' => __('Withdrawn successfully'),
-                'amount' => $attributes['amount'],
-                'new_balance' => $user->balance
+                'withdrawn_amount' => $attributes['amount'],
             ], Response::HTTP_CREATED);
         }
 
